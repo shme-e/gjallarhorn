@@ -23,6 +23,9 @@ RUN npm ci
 # Copy other project files
 COPY . .
 
+ARG CONTAINER_PATH
+ENV CONTAINER_PATH=${CONTAINER_PATH}
+
 # Build
 RUN npm run build
 

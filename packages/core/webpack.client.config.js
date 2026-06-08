@@ -72,6 +72,9 @@ module.exports = {
       resourceRegExp: /^\.\/locale$/,
       contextRegExp: /moment$/,
     }),
+    new webpack.DefinePlugin({
+      "process.env.CONTAINER_PATH": JSON.stringify(process.env.CONTAINER_PATH),
+    })
   ],
   devServer: {
     port: 3000,

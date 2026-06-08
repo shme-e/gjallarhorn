@@ -18,10 +18,13 @@ export class SocketService {
   }
 
   initialize() {
+    console.log("qqq");
+    console.log(process.env.CONTAINER_PATH);
+
     this.socket = io({
       reconnectionDelay: 300,
       reconnectionDelayMax: 300,
-      path: `/api/backend`,
+      path: `${process.env.CONTAINER_PATH}/api/backend`,
       transports: ["websocket"],
       upgrade: false,
     });

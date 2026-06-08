@@ -32,10 +32,10 @@ export class ServerService {
       } catch (e) {
         log.error(`Client bundle not found.`);
       }
-      app.use("/api", api);
+      app.use(`${process.env.CONTAINER_PATH}/api`, api);
       app.use(express.static(p));
       app.use((req, res, next) => {
-        if (req.url.startsWith("/api")) return next();
+        if (req.url.startsWith(`${process.env.CONTAINER_PATH}/api`)) return next();
         return res.sendFile(path.resolve(p, "index.html"));
       });
     });

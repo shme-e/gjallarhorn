@@ -79,7 +79,7 @@ export function App() {
   return (
     <ConduitProvider>
       <InversifyProvider container={container}>
-        <Router>
+        <Router basename={"/test2"}>
           <_App />
         </Router>
       </InversifyProvider>
