@@ -33,7 +33,9 @@ jobs:
       - name: Download and unzip node to dist
         run: |
           curl -o $RUNNER_TEMP/node.zip https://nodejs.org/dist/v16.20.2/node-v16.20.2-win-x64.zip
-          unzip $RUNNER_TEMP/node.zip -d $RUNNER_TEMP/dist
+          unzip $RUNNER_TEMP/node.zip -d $RUNNER_TEMP/node
+          cp $RUNNER_TEMP/node/node.exe $RUNNER_TEMP/dist
+          cp $RUNNER_TEMP/node/LICENSE $RUNNER_TEMP/dist
 
       - name: Create zip
         run: |
@@ -44,4 +46,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: gjallarhorn
-          path: $RUNNER_TEMP/dist/gjallarhorn.zip
+          path: ${{ runner.temp }}/dist/gjallarhorn.zip
